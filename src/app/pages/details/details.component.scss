@@ -5,7 +5,7 @@
   align-items: center;
   position: relative;
   overflow: hidden;
-  min-height: 100vh;
+  min-height: 90vh;
   padding: 2rem 0;
   width: 100vw;
 }
@@ -18,14 +18,13 @@
   position: absolute;
   top: 50%;
   right: 0;
-  z-index: 1;
+  //z-index: 1;
   height: 100rem;
   width: 100rem;
   border-radius: 50%;
   background: linear-gradient(-225deg, #ffffff 0%, #FFE29F 10%, #FFA99F 48%, #ffd1ff 100%);
   animation: scaleup-circle 900ms ease-in-out forwards;
   transition: background 1s ease-in-out;
-
 }
 
 .details-container__circle_dark {
@@ -39,9 +38,9 @@
   width: 65%;
   border-radius: 1rem;
   position: relative;
-  z-index: 3;
+  z-index: 1;
   justify-items: center;
-  opacity: 0;
+  //opacity: 0;
   animation: scaleup 1s ease-out 300ms, fadein 1.25s ease-out 300ms forwards;
 }
 
@@ -92,6 +91,7 @@
   justify-content: center;
   align-items: center;
   padding-bottom: 25%;
+  padding-left: 9vw;
 }
 
 .city-name-underline {
@@ -117,6 +117,7 @@
   grid-template-columns: 1fr;
   justify-items: center;
   grid-gap: 2rem;
+  padding-right: 9vw;
 }
 
 .temperature-state-container {
@@ -179,11 +180,10 @@
   padding: 2rem;
 }
 
-.forecast__container {
+.forecast-container {
   display: flex;
   flex-flow: row;
   margin-left: 1rem;
-  flex-wrap: wrap;
 }
 
 @keyframes spin {
@@ -192,15 +192,15 @@
   }
 }
 
-.day-weather__container {
+.day-weather-container {
   display: flex;
   flex-flow: column;
-  margin: 2rem 1.5rem;
+  margin: 2rem 5rem;
   justify-content: center;
   align-items: center;
 }
 
-.day-name__text {
+.day-weather-container__day {
   font-size: 1.5rem;
   color: #39437a;
   font-weight: bold;
@@ -208,11 +208,11 @@
   margin-bottom: 0.5rem;
 }
 
-.forecast-condition__icon {
+.day-weather__icon {
   height: 4rem;
 }
 
-.day-temp__text {
+.day-weather-container__temperature {
   font-size: 1.85rem;
   color: #0c1066;
   letter-spacing: 0.25rem;
@@ -221,7 +221,7 @@
   padding-left: 0.35rem;
 }
 
-.day-state__text {
+.day-weather-container__state {
   font-size: 0.65rem;
   text-transform: uppercase;
   letter-spacing: 0.2rem;

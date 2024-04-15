@@ -9,7 +9,7 @@ export class WeatherService {
 
   private readonly weatherURL: string = "http://api.openweathermap.org/data/2.5/weather?q=";
   private readonly forecastURL: string = "http://api.openweathermap.org/data/2.5/forecast?q=";
-  private readonly appID: string = 'b27588a12abe3085044416cad4ae2e78';
+  private readonly appID: string = 'f62e3731b7489ae221f3cf3628b3edef';
 
   constructor(public http: HttpClient) { }
 
@@ -20,7 +20,6 @@ export class WeatherService {
 
   getForecast(city: string, metric: 'metric' | 'imperial' = 'metric'): Observable<any> {
     return this.http.get(
-      `${this.forecastURL}${city}&units=${metric}&APPID=${this.appID}`)
-      .pipe(first(), map((weather) => 0));//weather['list']));
+      `${this.forecastURL}${city}&units=${metric}&APPID=${this.appID}`).pipe((first()));
   }
 }

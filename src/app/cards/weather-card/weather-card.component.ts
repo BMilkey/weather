@@ -1,9 +1,18 @@
-import {Component, EventEmitter, Input, OnDestroy, OnInit, Output} from '@angular/core';
+import {
+  AfterViewChecked,
+  AfterViewInit,
+  Component,
+  EventEmitter,
+  Input, OnChanges,
+  OnDestroy,
+  OnInit,
+  Output, SimpleChanges
+} from '@angular/core';
 import {Router, RouterLink} from "@angular/router";
 import {WeatherService} from "../../services/weather.service";
 import {AuthService} from "../../services/auth.service";
 import {SwitchThemeService} from "../../services/switch-theme.service";
-import {first, from} from "rxjs";
+import {first, from, switchMap, tap} from "rxjs";
 import {SignInComponent} from "../../pages/signin/signin.component";
 import {NgClass, NgIf, NgSwitch, NgSwitchCase} from "@angular/common";
 
@@ -19,7 +28,7 @@ import {NgClass, NgIf, NgSwitch, NgSwitchCase} from "@angular/common";
   templateUrl: './weather-card.component.html',
   styleUrl: './weather-card.component.scss'
 })
-export class WeatherCardComponent implements OnInit, OnDestroy{
+export class WeatherCardComponent implements OnInit, OnDestroy {
 
   @Input() addMode: any;
   @Output() cityStored: EventEmitter<any> = new EventEmitter();
@@ -31,30 +40,34 @@ export class WeatherCardComponent implements OnInit, OnDestroy{
   maxTemperature: number = 60;
   minTemperature: number = -60;
   errorMessage: string = '';
-  cityName: string = '';
-  cityAdded: boolean = false;
+  cities = this.auth.cards;
+  cityName: string = this.cities.value[0];
 
-  @Input() set city(city: string) {
-    this.cityName = city;
-    from(this.weather.getWeather(city)).pipe(first()).subscribe((payload) => {
-      this.state = payload.weather[0].main;
-      this.temperature = Math.ceil(payload.main.temp);
-    }, (err: any) => {
-      this.errorMessage = err.error.message;
-      setTimeout(() => {
-        this.errorMessage = '';
-      }, 3000);
-    });
-  }
+  cityAdded: boolean = false;
 
   constructor(public router: Router,
               public weather: WeatherService,
               public auth: AuthService,
-              public switchTheme: SwitchThemeService) { }
+              public switchTheme: SwitchThemeService) {
+  }
 
   ngOnInit() {
     this.subscriber = this.switchTheme.darkModeState.subscribe((isDark) => {
       this.darkModeActive = isDark;
+    })
+    this.cities.pipe(
+      tap(cities => {
+        this.cityName = cities[0];
+      }),
+      switchMap(() => {
+        if(this.cityName) return this.weather.getWeather(this.cityName)
+        throw new Error('no city')
+      })
+    ).subscribe((payload) => {
+      this.state = payload.weather[0].main;
+      this.temperature = Math.ceil(payload.main.temp);
+      this.maxTemperature = Math.ceil(payload.main.temp_max);
+      this.minTemperature = Math.ceil(payload.main.temp_min);
     })
   }
 
@@ -62,20 +75,7 @@ export class WeatherCardComponent implements OnInit, OnDestroy{
     this.subscriber.unsubscribe();
   }
 
-  addCity() {
-    // this.auth.addCity(this.cityName).subscribe(() => {
-    //   this.cityName = '';
-    //   this.maxTemperature = 60;
-    //   this.minTemperature = -60;
-    //   this.state = '';
-    //   this.temperature = 0;
-    //   this.cityAdded = true;
-    //   this.cityStored.emit();
-    //   setTimeout(() => this.cityAdded = false, 2000);
-    // });
-  }
-
-  openDetails(){
+  openDetails() {
     if (!this.addMode) {
       this.router.navigateByUrl('/details/' + this.cityName);
     }

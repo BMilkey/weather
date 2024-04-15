@@ -5,6 +5,7 @@ import {WeatherService} from "../../services/weather.service";
 import {FormsModule} from "@angular/forms";
 import {NgClass, NgIf, NgSwitch, CommonModule} from "@angular/common";
 import {Router} from "@angular/router";
+import {AuthService} from "../../services/auth.service";
 
 @Component({
   selector: 'add-city',
@@ -32,7 +33,7 @@ export class AddCityComponent implements OnInit, OnDestroy {
   now: Date = new Date();
   today: string = `${this.now.getDate()}.${this.now.getMonth() + 1}.${this.now.getFullYear()}`;
 
-  constructor(public http: HttpClient, public weather: WeatherService, public router: Router) { }
+  constructor(public http: HttpClient, public weather: WeatherService, public router: Router, public auth: AuthService) { }
 
   ngOnInit() {
     this.weather.getWeather(this.city).subscribe((payload) => {
@@ -42,7 +43,6 @@ export class AddCityComponent implements OnInit, OnDestroy {
   }
 
   selectedCity(city: string) {
-    console.log(city);
     if (this.capitals.includes(city)) {
       this.cardCity = city;
       this.showNote = false;
@@ -51,7 +51,8 @@ export class AddCityComponent implements OnInit, OnDestroy {
     }
   }
 
-  addCityOfTheMonth() {
+  addCity(city: string) {
+    this.auth.addCity(city);
     this.router.navigateByUrl('/home');
   }
 

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from "@angular/fire/compat/auth";
+import {BehaviorSubject} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -53,11 +54,11 @@ export class AuthService {
     }
   ];
 
-  cards: string[] = [];
+  cards = new BehaviorSubject<string[]>([]);
 
   addCity(cityName: string) {
-    this.cards.push(cityName);
-    console.log(this.cities);
+    this.cards.next([...this.cards.value, cityName])
+    //console.log(this.cities);
   }
 
   getCities() {
