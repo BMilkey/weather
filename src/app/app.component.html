@@ -1,2 +1,68 @@
-<button (click)="signUp('hello@gmail.com', 'hellogg')">Press Me</button>
-<router-outlet></router-outlet>
+<aside class="side-menu" [ngClass]="{'side-menu_active': showMenu}" (click)="switchMenu()"
+       xmlns:routerLinkActiveOptions="http://www.w3.org/1999/xhtml">
+  <nav class="slide-menu" [ngClass]="{'slide-menu_active': showMenu, 'slide-menu_dark': darkModeActive}">
+    <div class="menu-header" [ngClass]="{'menu-header_dark': darkModeActive}">
+      <span class="menu-header__greeting">Welcome Back</span>
+      <img src="./../assets/images/profile-image.jpg" class="menu-header__profile-image" alt="profile-image">
+      <div class="account-details">
+        <span class="account-details__email">{{ userEmail }}</span>
+        <span class="account-details__plan">Free Plan</span>
+      </div>
+    </div>
+    <div class="menu-body">
+      <ul class="menu-links" [ngClass]="{'menu-links_dark': darkModeActive}">
+        <li class="menu-links__link" routerLink='/home' (click)="switchMenu()">Home</li>
+        <li class="menu-links__link" routerLink='/add-city' (click)="switchMenu()">Add City</li>
+<!--        <li class="menu-links__link" (click)="signOut()">Logout</li>-->
+      </ul>
+    </div>
+    <div class="menu-footer">
+      <small class="menu-footer__copyright-text">Copyright © 2024 Weather App</small>
+    </div>
+
+  </nav>
+</aside>
+
+<main class="root" [ngClass]="{'root_dark': darkModeActive}">
+  <header class="main-header" [ngClass]="{'main-header_dark': darkModeActive}">
+    <div class="left-section">
+      <svg class="hamburger-icon" (click)="switchMenu()" viewBox="31.5 30 49.9 32">
+        <rect class="hamburger-icon__rectangle" width="49.9" height="4" rx="2"
+              [ngClass]="{'hamburger-icon__rectangle_dark': darkModeActive}"
+              transform="translate(31.5 58)"></rect>
+        <rect class="hamburger-icon__rectangle" width="49.9" height="4" rx="2"
+              [ngClass]="{'hamburger-icon__rectangle_dark': darkModeActive}"
+              transform="translate(31.5 44)"></rect>
+        <rect class="hamburger-icon__rectangle" width="49.9" height="4" rx="2"
+              [ngClass]="{'hamburger-icon__rectangle_dark': darkModeActive}"
+              transform="translate(31.5 30)"></rect>
+      </svg>
+
+<!--      <img class="logo-icon" src="assets/images/logo.svg" alt="logo-icon"/>-->
+
+    </div>
+
+    <h3 class="main-header__date">{{ today }}</h3>
+
+    <div class="mode-switcher">
+      <span class="mode-switcher__text">Light</span>
+
+      <label class="switch-button-container">
+        <input class="switch-button-container__input" (click)="modeSwitch()" type="checkbox">
+        <span class="switch-button-container__background"
+              [ngClass]="{'switch-button-container__background_checked': darkModeActive}"></span>
+        <span class="switch-button-container__circle"
+              [ngClass]="{'switch-button-container__circle_checked': darkModeActive}"></span>
+      </label>
+
+      <span class="mode-switcher__text">Dark</span>
+
+    </div>
+
+  </header>
+
+  <div class="main-container">
+    <router-outlet></router-outlet>
+  </div>
+
+</main>
