@@ -1,0 +1,30 @@
+<div class="main-container">
+  <div class="sign-in-card">
+
+    <main class="sign-in-content">
+      <span class="sign-in-content__header">Sign In</span>
+
+      <form class="sign-in-form" (ngSubmit)="signIn($event)" #authForm="ngForm">
+        <input class="sign-in-form__input" [ngModel]="email" type="email" placeholder="Email" required [ngModelOptions]="{standalone: true}">
+        <input class="sign-in-form__input" [ngModel]="password" type="password" minlength="6" required [ngModelOptions]="{standalone: true}">
+        <input class="sign-in-form__button" type="submit" value="Sign In" name="submit"
+               [class.btn-disabled]="!authForm.form.valid"
+               [disabled]="!authForm.form.valid">
+      </form>
+
+      <div class="sign-up-link-container">
+        <span class="sign-up-link-container__text">Don't have an account</span>
+        <a class="sign-up-link-container__link">Sign Up</a>
+      </div>
+
+    </main>
+
+    <aside class="sign-in-aside">
+      <div class="sign-in-aside__overlay"></div>
+      <h1 class="sign-in-aside__text">Welcome Back!</h1>
+      <hr class="sign-in-aside__hr">
+    </aside>
+
+  </div>
+
+</div>
