@@ -11,13 +11,16 @@
     </div>
     <div class="menu-body">
       <ul class="menu-links" [ngClass]="{'menu-links_dark': darkModeActive}">
-        <li class="menu-links__link" routerLink='/home' (click)="switchMenu()">Home</li>
-        <li class="menu-links__link" routerLink='/add-city' (click)="switchMenu()">Add City</li>
+        <li class="menu-links__link" routerLink='/home' (click)="switchMenu()"
+            [ngClass]="{'menu-links__link_dark': darkModeActive}">Home</li>
+        <li class="menu-links__link" routerLink='/add-city' (click)="switchMenu()"
+            [ngClass]="{'menu-links__link_dark': darkModeActive}">Add City</li>
 <!--        <li class="menu-links__link" (click)="signOut()">Logout</li>-->
       </ul>
     </div>
     <div class="menu-footer">
-      <small class="menu-footer__copyright-text">Copyright © 2024 Weather App</small>
+      <small class="menu-footer__copyright-text"
+             [ngClass]="{'menu-footer__copyright-text_dark': darkModeActive}">Copyright © 2024 Weather App</small>
     </div>
 
   </nav>

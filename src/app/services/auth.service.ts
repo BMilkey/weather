@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {BehaviorSubject} from "rxjs";
+import {BehaviorSubject, map, filter} from "rxjs";
 import {WeatherService} from "./weather.service";
 
 @Injectable({
@@ -30,10 +30,9 @@ export class AuthService {
       this.cityNeededToAdd.next(city);
 
     });
-    console.log(this.cards)
   }
 
-  // getCities() {
-  //   return this.cities;
-  // };
+  deleteCard(city: string) {
+    this.cards.next(this.cards.value.filter(({cityName}) => cityName !== city))
+  }
 }

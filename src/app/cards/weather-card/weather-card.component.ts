@@ -4,6 +4,7 @@ import {WeatherService} from "../../services/weather.service";
 import {AuthService} from "../../services/auth.service";
 import {SwitchThemeService} from "../../services/switch-theme.service";
 import {NgClass, NgForOf, NgIf, NgSwitch, NgSwitchCase} from "@angular/common";
+import {filter, map} from "rxjs";
 
 @Component({
   selector: 'weather-card',
@@ -48,7 +49,6 @@ export class WeatherCardComponent implements OnInit, OnDestroy {
       this.maxTemperature = this.city.weather.maxTemperature;
       this.minTemperature = this.city.weather.minTemperature;
     }
-
   }
 
   ngOnDestroy() {
