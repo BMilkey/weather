@@ -28,7 +28,7 @@
     </div>
 
     <div class="fav-city-container">
-      <img class="fav-city-container__image" src="./assets/images/france.svg"/>
+      <img class="fav-city-container__image" src="../../../assets/images/france.jpg"/>
       <div class="fav-city-container__overlay"></div>
 
       <div class="fav-city-header">
@@ -47,15 +47,15 @@
             </g>
           </svg>
 
-
-          <img src="./assets/images/drop.svg" *ngSwitchCase="state === 'Rain' || state === 'Drizzle' || state === 'Mist'"/>
-          <!--          <svg *ngSwitchCase="state === 'Rain' || state === 'Drizzle' || state === 'Mist'" viewBox="3170 -843.1 163.5 242.7">-->
-          <!--            <g>-->
-          <!--              <path fill="#0032cc" d="M3295.4-824.5s85.8 133.5 0 133.5 0-133.5 0-133.5z"/>-->
-          <!--              <path fill="#003eff" d="M3239.4-843s-156.1 242.6 0 242.6 0-242.7 0-242.7z"/>-->
-          <!--            </g>-->
-
-          <!--          </svg>-->
+          <svg class="day-weather__icon" *ngSwitchCase="state === 'Rain' || state === 'Drizzle' || state === 'Mist'"
+               viewBox="3170 -843.1 163.5 242.7">
+            <g data-name="Rain Icon">
+              <g data-name="Water Drops">
+                <path fill="#0032cc" d="M3295.4-824.5s85.8 133.5 0 133.5 0-133.5 0-133.5z" data-name="Path 7"/>
+                <path fill="#003eff" d="M3239.4-843s-156.1 242.6 0 242.6 0-242.7 0-242.7z" data-name="Path 3"/>
+              </g>
+            </g>
+          </svg>
 
           <svg *ngSwitchCase="state === 'Storm' || state === 'Thunderstorm'" viewBox="3487.9 -810.7 291.2 200.3">
             <g transform="translate(1959 -1260.7)">
@@ -94,14 +94,14 @@
         <div class="fav-city-info">
           <span class="fav-city-info__temperature">{{ temperature }}°</span>
           <div class="fav-city-name-container">
-            <span class="fav-city-name-container__city-name">ROME</span>
-            <span class="fav-city-name-container__country-name">Italy</span>
+            <span class="fav-city-name-container__city-name">{{ city }}</span>
+<!--            <span class="fav-city-name-container__country-name">France</span>-->
           </div>
           <span class="fav-city-info__state">{{ state }}</span>
         </div>
-        <button class="fav-city-body__button"
-                [ngClass]="{'fav-city-body__button_added': followedCM}" (click)="1"
-                [disabled]="followedCM">{{followedCM ? "FOLLOWED" : "FOLLOW"}}</button>
+<!--        <button class="fav-city-body__button"-->
+<!--                [ngClass]="{'fav-city-body__button_added': followedCM}" (click)="1"-->
+<!--                [disabled]="followedCM">{{followedCM ? "FOLLOWED" : "FOLLOW"}}</button>-->
       </div>
 
 

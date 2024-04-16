@@ -1,4 +1,7 @@
 <div class="main-container">
-  <weather-card *ngFor="let city of cities"></weather-card>
+<!--  <ng-container *ngIf="this.auth.cards.value.length > 0">-->
+<!--    <weather-card *ngFor="let city of cities" [cityName]="city.cityName"></weather-card>-->
+<!--  </ng-container>-->
+  <weather-card *ngFor="let city of cities" [cityName]="city.cityName"></weather-card>
   <add-card></add-card>
 </div>

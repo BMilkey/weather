@@ -6,6 +6,7 @@ import {FormsModule} from "@angular/forms";
 import {NgClass, NgIf, NgSwitch, CommonModule} from "@angular/common";
 import {Router} from "@angular/router";
 import {AuthService} from "../../services/auth.service";
+import {isEmpty} from "rxjs";
 
 @Component({
   selector: 'add-city',
@@ -21,10 +22,10 @@ import {AuthService} from "../../services/auth.service";
   styleUrl: './add-city.component.scss'
 })
 export class AddCityComponent implements OnInit, OnDestroy {
-  city: string = 'Rome';
+  city: string = 'Paris';
   subscriber: any;
   showNote: boolean = false;
-  capitals: string[] = ['tunis'];
+  capitals: string[] = ['tunis', 'paris', 'qatar', 'rabat'];
   cardCity: any;
   state: string = "Mist";
   temperature: number = 0;
@@ -51,9 +52,14 @@ export class AddCityComponent implements OnInit, OnDestroy {
     }
   }
 
-  addCity(city: string) {
-    this.auth.addCity(city);
+  addCity(cityName: string) {
+
+    if (!(this.auth.cards.value.find(item => item.cityName === cityName))) {
+      this.auth.addCity(cityName);
+      this.router.navigateByUrl('/home');
+    }
     this.router.navigateByUrl('/home');
+
   }
 
   ngOnDestroy() {
