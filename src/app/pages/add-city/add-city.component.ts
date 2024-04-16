@@ -4,9 +4,8 @@ import {HttpClient} from "@angular/common/http";
 import {WeatherService} from "../../services/weather.service";
 import {FormsModule} from "@angular/forms";
 import {NgClass, NgIf, NgSwitch, CommonModule} from "@angular/common";
-import {Router} from "@angular/router";
+import {Router, RouterLink} from "@angular/router";
 import {AuthService} from "../../services/auth.service";
-import {isEmpty} from "rxjs";
 
 @Component({
   selector: 'add-city',
@@ -17,17 +16,18 @@ import {isEmpty} from "rxjs";
     NgSwitch,
     NgClass,
     CommonModule,
+    RouterLink,
   ],
   templateUrl: './add-city.component.html',
   styleUrl: './add-city.component.scss'
 })
-export class AddCityComponent implements OnInit, OnDestroy {
+export class AddCityComponent implements OnInit {
   city: string = 'Paris';
   subscriber: any;
   showNote: boolean = false;
-  capitals: string[] = ['tunis', 'paris', 'qatar', 'rabat'];
+  capitals: string[] = ['tunis', 'paris', 'qatar', 'rabat', 'chelyabinsk'];
   cardCity: any;
-  state: string = "Mist";
+  state: string = "";
   temperature: number = 0;
   followedCM: boolean = false;
 
@@ -62,7 +62,4 @@ export class AddCityComponent implements OnInit, OnDestroy {
 
   }
 
-  ngOnDestroy() {
-    //this.subscriber.unsubscribe();
-  }
 }

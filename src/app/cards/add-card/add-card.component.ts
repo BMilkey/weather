@@ -1,8 +1,6 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {RouterLink} from "@angular/router";
-import {NgClass, NgIf, NgSwitch} from "@angular/common";
-import {Subscription} from "rxjs";
-import {AuthService} from "../../services/auth.service";
+import {NgClass, NgIf} from "@angular/common";
 import {SwitchThemeService} from "../../services/switch-theme.service";
 
 @Component({

@@ -12,6 +12,16 @@
   background-color: white;
   border-radius: 1.75rem;
   animation: slideup 1s ease-in-out, fadein 1.25s ease-in-out 0ms 1;
+
+}
+
+.weather__card:hover {
+  transition: 0.3s;
+  margin-top: 0;
+}
+
+.weather-card__button {
+  justify-self: end;
 }
 
 .weather__card-add {
@@ -34,17 +44,15 @@
   margin-bottom: 1rem;
 }
 
-.temperature__text {
-  align-self: end;
+.temperature-text__container {
   width: 100%;
-  font-size: 4rem;
-  font-weight: 100;
-  letter-spacing: 0.1rem;
 }
 
 .temperature-metric__text {
-  text-align: start;
   font-size: 3rem;
+  display: block;
+  text-align: center;
+  padding-left: 1vw;
 }
 
 .min-max__container {
@@ -103,8 +111,12 @@
   justify-content: center;
 }
 
-.weather-icon__container > svg {
-  width: 10rem;
+.weather-icon-container__other {
+  width: 9rem;
+}
+
+.weather-icon-container__rain {
+  width: 6rem;
 }
 
 .add-city-btn {

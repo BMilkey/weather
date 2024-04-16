@@ -3,7 +3,6 @@ import {Router, RouterLink} from "@angular/router";
 import {WeatherService} from "../../services/weather.service";
 import {AuthService} from "../../services/auth.service";
 import {SwitchThemeService} from "../../services/switch-theme.service";
-import {SignInComponent} from "../../pages/signin/signin.component";
 import {NgClass, NgForOf, NgIf, NgSwitch, NgSwitchCase} from "@angular/common";
 
 @Component({
@@ -19,8 +18,6 @@ import {NgClass, NgForOf, NgIf, NgSwitch, NgSwitchCase} from "@angular/common";
 })
 export class WeatherCardComponent implements OnInit, OnDestroy {
 
-  //@Input() addMode: any;
-  //@Output() cityStored: EventEmitter<any> = new EventEmitter();
   darkModeActive: boolean = false;
   subscriber: any;
 
@@ -52,32 +49,6 @@ export class WeatherCardComponent implements OnInit, OnDestroy {
       this.minTemperature = this.city.weather.minTemperature;
     }
 
-    console.log(this.city)
-    // let checkCity = this.citiesCards.find(item => item.name === this.cityName);
-    // console.log(this.citiesCards.find(item => item.name === this.cityName))
-
-    // if (checkCity === undefined) {
-
-      // this.cities.pipe(
-      //   // tap(cities => {
-      //   //   this.cityName = cities[0];
-      //   // }),
-      //   switchMap(() => {
-      //     if (this.cityName) return this.weather.getWeather(this.cityName)
-      //     throw new Error('No city')
-      //   })
-      // ).subscribe((payload) => {
-      //   this.state = payload.weather[0].main;
-      //   this.temperature = Math.ceil(payload.main.temp);
-      //   this.maxTemperature = Math.ceil(payload.main.temp_max);
-      //   this.minTemperature = Math.ceil(payload.main.temp_min);
-      // });
-      //
-      // this.citiesCards.push({
-      //   name: this.cityName, state: this.state, temp: this.temperature,
-      //   maxTemp: this.maxTemperature, minTemp: this.minTemperature
-      // });
-      // console.log(this.citiesCards)
   }
 
   ngOnDestroy() {

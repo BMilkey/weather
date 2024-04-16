@@ -20,6 +20,11 @@
   color: white;
 }
 
+.add-card-container:hover {
+  transition: 0.3s;
+  margin-top: 0;
+}
+
 .header-container__header {
   text-transform: uppercase;
   letter-spacing: 0.1rem;

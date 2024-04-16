@@ -1,20 +1,9 @@
-import {
-  AfterViewChecked,
-  ChangeDetectionStrategy,
-  ChangeDetectorRef,
-  Component,
-  EventEmitter,
-  OnInit,
-  Output
-} from '@angular/core';
+import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import { AddCardComponent} from "../../cards/add-card/add-card.component";
 import {Router, RouterLink} from "@angular/router";
 import {WeatherCardComponent} from "../../cards/weather-card/weather-card.component";
 import {AsyncPipe, NgForOf, NgIf} from "@angular/common";
-
 import {AuthService} from "../../services/auth.service";
-import {BehaviorSubject} from "rxjs";
-
 
 @Component({
   selector: 'app-home',
