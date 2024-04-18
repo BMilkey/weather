@@ -1,7 +1,10 @@
 
   <section class="weather__card" (click)="openDetails()"
            [ngClass]="{'weather__card-dark': darkModeActive}">
-    <img class="weather-card__button" src="assets/images/x.svg" (click)="this.auth.deleteCard(cityName)" alt="x"/>
+    <img class="weather-card__button" src="assets/images/x.svg" *ngIf="!darkModeActive"
+         (click)="this.auth.deleteCard(cityName)" alt="x"/>
+    <img class="weather-card__button" src="assets/images/x-white.svg" *ngIf="darkModeActive"
+         (click)="this.auth.deleteCard(cityName)" alt="x"/>
     <span class="city-name__text">{{ cityName }}</span>
     <div class="weather-icon__container" [ngSwitch]="true">
       <svg class="weather-icon-container__other" *ngSwitchCase="state === 'Sunny' || state === 'Clear'" viewBox="2050 -845 262 262">

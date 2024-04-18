@@ -27,10 +27,6 @@
   pointer-events: auto;
 }
 
-//.side-menu_active{
-//  opacity: 0.3;
-//}
-
 .slide-menu {
   box-sizing: border-box;
   transform: translateX(-200%);
@@ -68,7 +64,6 @@
   width: 100%;
   align-content: center;
   color: white;
-  box-shadow: 0 0.5rem 2rem rgba(0, 0, 255, 0.2);
 }
 
 .menu-header_dark {
@@ -139,8 +134,6 @@
 
 .menu-links__link:hover {
   background-color: #5f84fb;
-  margin-right: -1vw;
-  margin-left: 1vw;
 }
 
 .menu-header__profile-image {
@@ -210,6 +203,14 @@
 
 .hamburger-icon {
   cursor: context-menu;
+}
+
+.hamburger-icon__rectangle {
+  fill: #2B244D;
+}
+
+.hamburger-icon__rectangle_dark {
+  fill: #ffff;
 }
 
 .main-header__date {

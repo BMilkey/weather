@@ -3,7 +3,7 @@ import {WeatherService} from "../../services/weather.service";
 import {SwitchThemeService} from "../../services/switch-theme.service";
 import {ActivatedRoute, RouterLink} from "@angular/router";
 import {switchMap} from "rxjs";
-import {KeyValuePipe, NgClass, NgForOf, NgOptimizedImage, NgSwitch, NgSwitchCase} from "@angular/common";
+import {KeyValuePipe, NgClass, NgForOf, NgIf, NgOptimizedImage, NgSwitch, NgSwitchCase} from "@angular/common";
 import {AuthService} from "../../services/auth.service";
 
 @Component({
@@ -16,7 +16,8 @@ import {AuthService} from "../../services/auth.service";
     RouterLink,
     NgClass,
     NgOptimizedImage,
-    NgForOf
+    NgForOf,
+    NgIf
   ],
   templateUrl: './details.component.html',
   styleUrl: './details.component.scss'

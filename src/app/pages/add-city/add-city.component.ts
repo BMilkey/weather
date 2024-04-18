@@ -25,7 +25,7 @@ export class AddCityComponent implements OnInit {
   city: string = 'Paris';
   subscriber: any;
   showNote: boolean = false;
-  capitals: string[] = ['tunis', 'paris', 'qatar', 'rabat', 'chelyabinsk'];
+  availableCities: string[] = [];
   cardCity: any;
   state: string = "";
   temperature: number = 0;
@@ -41,10 +41,14 @@ export class AddCityComponent implements OnInit {
       this.state = payload.weather[0].main;
       this.temperature = Math.ceil(Number(payload.main.temp));
     })
+
+    this.auth.cities.forEach((item) => {
+      this.availableCities.push(item.cityName);
+    })
   }
 
   selectedCity(city: string) {
-    if (this.capitals.includes(city)) {
+    if (this.availableCities.includes(city)) {
       this.cardCity = city;
       this.showNote = false;
     } else if (city) {

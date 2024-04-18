@@ -2,9 +2,10 @@
   <div class="details-container__circle" [ngClass]="{'details-container__circle_dark': darkModeActive}"></div>
 
   <section class="main-weather-card">
-    <img class="back-button" src="assets/images/x.svg" routerLink="/home" alt="x">
+    <img class="back-button" src="assets/images/x.svg" *ngIf="!darkModeActive" routerLink="/home" alt="x">
+    <img class="back-button" src="assets/images/x-white.svg" *ngIf="darkModeActive" routerLink="/home" alt="x">
     <section class="card-header-container">
-      <img class="card-header-container__image" [src]="cityImagePath"/>
+      <img class="card-header-container__image" [src]="cityImagePath" onerror="this.src='assets/images/default.svg'"/>
       <div class="header-content-container">
         <div class="today-weather-container">
           <div class="temperature-state-container">
