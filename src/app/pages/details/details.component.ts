@@ -55,7 +55,7 @@ export class DetailsComponent implements OnInit{
       this.temperature = Math.ceil(payload.main.temp);
       this.humidity = payload.main.humidity;
       this.wind = Math.round(payload.wind.speed);
-      this.cityImagePath = `./../../../assets/images/${this.cityName}.svg`;
+      this.cityImagePath = `assets/images/${this.cityName}.svg`;
     })
 
     this.cities.pipe(
